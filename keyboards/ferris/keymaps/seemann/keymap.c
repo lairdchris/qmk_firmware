@@ -30,15 +30,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       DE_EXLM,         DE_AT,          DE_HASH,         DE_DLR,          DE_PERC,    DE_CIRC,    DE_AMPR,      DE_ASTR,      DE_SCLN,      DE_COLN,
       LSFT_T(DE_ADIA), LCTL_T(DE_SS),  LALT_T(DE_ODIA), LGUI_T(DE_UDIA), DE_EQL,     DE_PLUS,    TD(DANCE_0),  TD(DANCE_1),  TD(DANCE_2),  LSFT_T(KC_ENT),
       DE_EURO,         KC_NO,          KC_NO,           KC_NO,           KC_NO,      DE_MINS,    KC_NO,        DE_LABK,      DE_RABK,      DE_QUES,
-      KC_NO,           KC_NO,                                                        MO(3),      KC_NO),      
+      KC_NO,           KC_NO,                                                        KC_NO,      MO(3)),      
 	[2] = LAYOUT_split_3x5_2(
       TD(DANCE_3),     DE_ACUT,        DE_LCBR,         DE_RCBR,         DE_UNDS,    TD(DANCE_7),    KC_7,        KC_8,        KC_9,        TD(DANCE_8), 
       LSFT_T(KC_ESC),  DE_PIPE,        DE_LPRN,         DE_RPRN,         DE_EQL,     DE_PLUS,    LGUI_T(KC_4),  LALT_T(KC_5),  LCTL_T(KC_6),  LSFT_T(KC_ENT), 
       KC_NO,           DE_TILD,        DE_LBRC,         DE_RBRC,         DE_BSLS,    KC_0,      KC_1,        KC_2,        KC_3,        DE_ASTR, 
-      KC_NO,           MO(3),                                            KC_NO,      KC_NO),
+      MO(3),           KC_NO,                                            KC_NO,      KC_NO),
 	[3] = LAYOUT_split_3x5_2(
       KC_MUTE,         KC_WH_L,        KC_MS_U,         KC_WH_R,         KC_WH_U,    KC_NO,      KC_MRWD,      KC_MPLY,     KC_MFFD,     KC_NO, 
-      KC_VOLU,         KC_MS_L,        KC_MS_D,         KC_MS_R,         KC_WH_D,    KC_NO,      KC_BTN1,      KC_BTN2,     KC_BTN3,     KC_NO, 
+      KC_VOLU,         KC_MS_L,        KC_MS_D,         KC_MS_R,         KC_WH_D,    KC_NO,      KC_BTN1,      KC_BTN3,     KC_BTN2,     KC_NO, 
       KC_VOLD,         KC_NO,          KC_NO,           KC_NO,           KC_NO,      KC_NO,      KC_ACL0,      KC_ACL1,     KC_ACL2,     RESET, 
       KC_NO,           KC_TRNS,                                                      KC_TRNS,    KC_NO),
 	[4] = LAYOUT_split_3x5_2(
