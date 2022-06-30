@@ -20,8 +20,8 @@ enum sweep_layers {
   BASE,
   SYM,
   NUM,
-  NAV,
-  MOU
+  MOU,
+  NAV
 };
 
 enum tap_dance_codes {
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |       |        |       |       |         |     |         |         |       |        |       |
 * |------------------------------------------+     |--------------------------------------------+
 * |   a   |    r   |   s   |   t   |    g    |     |    m    |    n    |   e   |    i   |   o   |
-* | Shift |  Ctrl  |  Alt  |  Gui  |  _NAV_  |     |  _NAV_  |   Gui   |  Alt  |  Ctrl  | Shift |
+* | Shift |  Ctrl  |  Alt  |  Gui  |  _MOU_  |     |  _MOU_  |   Gui   |  Alt  |  Ctrl  | Shift |
 * |------------------------------------------+     |--------------------------------------------+
 * |   z   |    x   |   c   |   d   |    v    |     |    k    |    h    |  ,    |    .   |   /   |
 * |       |        |       |       |         |     |         |         |       |        |       |
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * |       |        |       |       |         |     |         |         |       |        |       |
 * |------------------------------------------+     |--------------------------------------------+
 * |                        |       |         |     |         |         |                        |
-* |                        |       |         |     |         |  _MOU_  |                        |
+* |                        |       |         |     |         |  _NAV_  |                        |
 * \------------------------------------------/     \--------------------------------------------/
 */
 	[SYM] = LAYOUT_split_3x5_2(
@@ -81,23 +81,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
 * Layer NUM
 * ,------------------------------------------.     ,--------------------------------------------.
-* |  Tab  |    '   |   {   |   }   |    _    |     |    -    |    7    |   8   |    9   |   .   |
-* |Gui+Tab|        |       |       |         |     |    :    |         |       |        |   ,   |
+* |  Tab  |    '   |   {   |   }   |    _    |     |    -    |    7    |   8   |    9   |   *   |
+* |Gui+Tab|        |       |       |         |     |    :    |         |       |        |       |
 * |------------------------------------------+     |--------------------------------------------+
 * |  Esc  |    |   |   (   |   )   |    =    |     |    +    |    4    |   5   |    6   | Enter |
 * | Shift |  Ctrl  |  Alt  |  Gui  |         |     |         |   Gui   |  Alt  |  Ctrl  | Shift |
 * |------------------------------------------+     |--------------------------------------------+
-* |       |    ~   |   [   |   ]   |    \    |     |    0    |    1    |   2   |    3   |   *   |
-* |       |        |       |       |         |     |         |         |       |        |       |
+* |       |    ~   |   [   |   ]   |    \    |     |    0    |    1    |   2   |    3   |   .   |
+* |       |        |       |       |         |     |         |         |       |        |   ,   |
 * |------------------------------------------+     |--------------------------------------------+
 * |                        |       |         |     |         |         |                        |
-* |                        | _MOU_ |         |     |         |         |                        |
+* |                        | _NAV_ |         |     |         |         |                        |
 * \------------------------------------------/     \--------------------------------------------/
 */
 	[NUM] = LAYOUT_split_3x5_2(
-      TD(TAB_D),       DE_ACUT,         DE_LCBR,         DE_RCBR,         DE_UNDS,         /* */   TD(COLN_D),     KC_7,            KC_8,          KC_9,            TD(DOT_D), 
+      TD(TAB_D),       DE_ACUT,         DE_LCBR,         DE_RCBR,         DE_UNDS,         /* */   TD(COLN_D),     KC_7,            KC_8,          KC_9,            DE_ASTR, 
       LSFT_T(KC_ESC),  DE_PIPE,         DE_LPRN,         DE_RPRN,         DE_EQL,          /* */   DE_PLUS,        LGUI_T(KC_4),    LALT_T(KC_5),  LCTL_T(KC_6),    LSFT_T(KC_ENT), 
-      KC_NO,           DE_TILD,         DE_LBRC,         DE_RBRC,         DE_BSLS,         /* */   KC_0,           KC_1,            KC_2,          KC_3,            DE_ASTR, 
+      KC_NO,           DE_TILD,         DE_LBRC,         DE_RBRC,         DE_BSLS,         /* */   KC_0,           KC_1,            KC_2,          KC_3,            TD(DOT_D), 
                                                          MO(3),           KC_NO,           /* */   KC_NO,          KC_NO),
 /*
 * Layer NAV
