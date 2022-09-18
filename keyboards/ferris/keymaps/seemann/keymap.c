@@ -57,17 +57,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_Q,             KC_W,           KC_F,            KC_P,            KC_B,            /* */   KC_J,           KC_L,            KC_U,          DE_Y,            KC_BSPC, 
 			LSFT_T(KC_A),     LCTL_T(KC_R),   LALT_T(KC_S),    LGUI_T(KC_T),    LT(4,KC_G),      /* */   LT(4,KC_M),     LGUI_T(KC_N),    LALT_T(KC_E),  LCTL_T(KC_I),    LSFT_T(KC_O), 
 			DE_Z,             KC_X,           KC_C,            KC_D,            KC_V,            /* */   KC_K,           KC_H,            KC_COMM,       KC_DOT,          DE_SLSH, 
-			                                                   LT(1,KC_SPC),    LSFT_T(KC_SPC),  /* */   LSFT_T(KC_SPC), LT(2,KC_SPC)),
+			                                                   LT(1,KC_SPC),    LSFT_T(KC_ESC),  /* */   LSFT_T(KC_TAB), LT(2,KC_SPC)),
 /*
 * Layer SYM
 * ,------------------------------------------.     ,--------------------------------------------.
 * |   !   |    @   |   #   |   $   |    %    |     |    ^    |    &    |   *   |    ;   |   :   |
 * |       |        |       |       |         |     |         |         |       |        |       |
 * |------------------------------------------+     |--------------------------------------------+
-* |   ä   |    ß   |   ö   |   ü   |    =    |     |    +    |    `    |   '   |    "   | Enter |
+* |   ä   |    ö   |   ß   |   ü   |    €    |     |    +    |    `    |   '   |    "   | Enter |
 * | Shift |  Ctrl  |  Alt  |  Gui  |         |     |  Home   |  PgDn   | PgUp  |   End  |       |
 * |------------------------------------------+     |--------------------------------------------+
-* |       |    €   |       |       |         |     |    -    |         |   <   |    >   |   ?   |
+* |       |    ~   |   \   |   |   |         |     |    -    |    _    |   <   |    >   |   ?   |
 * |       |        |       |       |         |     |         |         |       |        |       |
 * |------------------------------------------+     |--------------------------------------------+
 * |                        |       |         |     |         |         |                        |
@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 */
 	[SYM] = LAYOUT_split_3x5_2(
       DE_EXLM,         DE_AT,           DE_HASH,         DE_DLR,          DE_PERC,         /* */   DE_CIRC,        DE_AMPR,         DE_ASTR,       DE_SCLN,         DE_COLN,
-      LSFT_T(DE_ADIA), LCTL_T(DE_SS),   LALT_T(DE_ODIA), LGUI_T(DE_UDIA), DE_EQL,          /* */   TD(PLUS_D),     TD(ACUT_D),      TD(QUOT_D),    TD(DQUO_D),      KC_ENT,
-      KC_NO,           DE_EURO,         KC_NO,           KC_NO,           KC_NO,           /* */   DE_MINS,        KC_NO,           DE_LABK,       DE_RABK,         DE_QUES,
-                                                         KC_NO,           KC_NO,           /* */   KC_NO,          MO(3)),      
+      LSFT_T(DE_ADIA), LCTL_T(DE_ODIA), LALT_T(DE_SS),   LGUI_T(DE_UDIA), DE_EURO,         /* */   TD(PLUS_D),     TD(ACUT_D),      TD(QUOT_D),    TD(DQUO_D),      KC_ENT,
+      KC_NO,           DE_TILD,         DE_BSLS,         DE_PIPE,         KC_NO,           /* */   DE_MINS,        DE_UNDS,         DE_LABK,       DE_RABK,         DE_QUES,
+                                                         KC_NO,           KC_ESC,          /* */   KC_TAB,         MO(3)),      
 /*
 * Layer NUM
 * ,------------------------------------------.     ,--------------------------------------------.
@@ -96,10 +96,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * \------------------------------------------/     \--------------------------------------------/
 */
 	[NUM] = LAYOUT_split_3x5_2(
-      TD(TAB_D),       DE_ACUT,         DE_LCBR,         DE_RCBR,         DE_UNDS,         /* */   TD(COLN_D),     KC_7,            KC_8,          KC_9,            DE_ASTR, 
-      LSFT_T(KC_ESC),  DE_PIPE,         DE_LPRN,         DE_RPRN,         DE_EQL,          /* */   DE_PLUS,        LGUI_T(KC_4),    LALT_T(KC_5),  LCTL_T(KC_6),    LSFT_T(KC_ENT), 
-      KC_NO,           DE_TILD,         DE_LBRC,         DE_RBRC,         DE_BSLS,         /* */   KC_0,           KC_1,            KC_2,          KC_3,            TD(DOT_D), 
-                                                         MO(3),           KC_NO,           /* */   KC_NO,          KC_NO),
+      KC_NO,           KC_NO,           DE_LCBR,         DE_RCBR,         KC_NO,           /* */   TD(COLN_D),     KC_7,            KC_8,          KC_9,            DE_ASTR, 
+      KC_NO,           DE_SCLN,         DE_LPRN,         DE_RPRN,         DE_EQL,          /* */   DE_PLUS,        KC_4,            KC_5,          KC_6,            KC_ENT, 
+      KC_NO,           KC_NO,           DE_LBRC,         DE_RBRC,         KC_NO,           /* */   KC_0,           KC_1,            KC_2,          KC_3,            TD(DOT_D), 
+                                                         MO(3),           KC_ESC,          /* */   KC_TAB,         KC_NO),
 /*
 * Layer NAV
 * ,------------------------------------------.     ,--------------------------------------------.
@@ -117,10 +117,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 * \------------------------------------------/     \-------------------------------------------/
 */
 	[NAV] = LAYOUT_split_3x5_2(
-      KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,           /* */   KC_F6,          KC_F7,           KC_F8,         KC_F9,           KC_F10, 
-      LSFT_T(KC_HOME), LCTL_T(KC_INS),  LALT_T(KC_PGUP), LGUI_T(KC_PGDN), KC_DEL,          /* */   KC_LEFT,        LGUI_T(KC_DOWN), LALT_T(KC_UP), LCTL_T(KC_RGHT), LSFT_T(KC_END), 
-      KC_NO,           KC_NO,           KC_NO,           KC_NO,           KC_NO,           /* */   KC_NO,          KC_NO,           KC_NO,         KC_F11,          KC_F12, 
-                                                         KC_NO,           KC_NO,           /* */   KC_NO,          KC_NO),
+      KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_NO,           /* */   KC_HOME,        KC_NO,           KC_NO,         KC_INS,          KC_DEL, 
+      LSFT_T(KC_F5),   LCTL_T(KC_F6),   LALT_T(KC_F7),   LGUI_T(KC_F8),   KC_NO,           /* */   KC_LEFT,        LGUI_T(KC_DOWN), LALT_T(KC_UP), LCTL_T(KC_RGHT), LSFT_T(KC_END), 
+      KC_F9,           KC_F10,          KC_F11,          KC_F12,          KC_NO,           /* */   KC_END,         KC_PGDN,         KC_PGUP,       KC_NO,           KC_NO, 
+                                                         KC_NO,           KC_ESC,          /* */   KC_TAB,         KC_NO),
 /*
 * Layer MOU
 * ,------------------------------------------.     ,--------------------------------------------.
