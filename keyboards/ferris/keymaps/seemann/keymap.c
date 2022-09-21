@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Layer NUM
      * ,------------------------------------------.     ,--------------------------------------------.
      * |       |        |   {   |   }   |         |     |    -    |    7    |   8   |    9   |   *   |
-     * |       |        |       |       |         |     |    :    |         |       |        |       |
+     * |       |        |       |       |         |     |         |         |       |        |   :   |
      * |------------------------------------------+     |--------------------------------------------+
      * |       |    ;   |   (   |   )   |    =    |     |    +    |    4    |   5   |    6   | Enter |
      * |       |        |       |       |         |     |         |         |       |        |       |
@@ -92,10 +92,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          \-----------------/     \-------------------/
      */
     [NUM] = LAYOUT_split_3x5_2(
-        XXXXXXX, XXXXXXX, DE_LCBR, DE_RCBR, XXXXXXX, /* */ TD(COLN_D), KC_7, KC_8, KC_9, DE_ASTR,
-        XXXXXXX, DE_SCLN, DE_LPRN, DE_RPRN, DE_EQL,  /* */ DE_PLUS,    KC_4, KC_5, KC_6, KC_ENT,
-        XXXXXXX, XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0,       KC_1, KC_2, KC_3, TD(DOT_D),
-                                   MO(3),   KC_ESC,  /* */ KC_TAB,     XXXXXXX
+        XXXXXXX, XXXXXXX, DE_LCBR, DE_RCBR, XXXXXXX, /* */ KC_KP_MINUS, KC_7, KC_8, KC_9, TD(COLN_D),
+        XXXXXXX, DE_SCLN, DE_LPRN, DE_RPRN, DE_EQL,  /* */ DE_PLUS,     KC_4, KC_5, KC_6, KC_ENT,
+        XXXXXXX, XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0,        KC_1, KC_2, KC_3, TD(DOT_D),
+                                   MO(3),   KC_ESC,  /* */ KC_TAB,      XXXXXXX
     ),
     /*
      * Layer NAV
@@ -404,12 +404,12 @@ void coln_dance_reset(qk_tap_dance_state_t *state, void *user_data);
 
 void on_coln_dance(qk_tap_dance_state_t *state, void *user_data) {
     if (state->count == 3) {
-        tap_code16(KC_KP_MINUS);
-        tap_code16(KC_KP_MINUS);
-        tap_code16(KC_KP_MINUS);
+        tap_code16(DE_ASTR);
+        tap_code16(DE_ASTR);
+        tap_code16(DE_ASTR);
     }
     if (state->count > 3) {
-        tap_code16(KC_KP_MINUS);
+        tap_code16(DE_ASTR);
     }
 }
 
@@ -417,18 +417,18 @@ void coln_dance_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[7].step = dance_step(state);
     switch (dance_state[7].step) {
         case SINGLE_TAP:
-            register_code16(KC_KP_MINUS);
+            register_code16(DE_ASTR);
             break;
         case SINGLE_HOLD:
             register_code16(DE_COLN);
             break;
         case DOUBLE_TAP:
-            register_code16(KC_KP_MINUS);
-            register_code16(KC_KP_MINUS);
+            register_code16(DE_ASTR);
+            register_code16(DE_ASTR);
             break;
         case DOUBLE_SINGLE_TAP:
-            tap_code16(KC_KP_MINUS);
-            register_code16(KC_KP_MINUS);
+            tap_code16(DE_ASTR);
+            register_code16(DE_ASTR);
     }
 }
 
@@ -436,16 +436,16 @@ void coln_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[7].step) {
         case SINGLE_TAP:
-            unregister_code16(KC_KP_MINUS);
+            unregister_code16(DE_ASTR);
             break;
         case SINGLE_HOLD:
             unregister_code16(DE_COLN);
             break;
         case DOUBLE_TAP:
-            unregister_code16(KC_KP_MINUS);
+            unregister_code16(DE_ASTR);
             break;
         case DOUBLE_SINGLE_TAP:
-            unregister_code16(KC_KP_MINUS);
+            unregister_code16(DE_ASTR);
             break;
     }
     dance_state[7].step = 0;
@@ -564,5 +564,11 @@ void plus_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [ACUT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_acut_dance, acut_dance_finished, acut_dance_reset), [QUOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_quot_dance, quot_dance_finished, quot_dance_reset), [DQUO_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dquo_dance, dquo_dance_finished, dquo_dance_reset), [TAB_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_tab_dance, tab_dance_finished, tab_dance_reset), [COLN_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_coln_dance, coln_dance_finished, coln_dance_reset), [DOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dot_dance, dot_dance_finished, dot_dance_reset), [PLUS_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_plus_dance, plus_dance_finished, plus_dance_reset),
+    [ACUT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_acut_dance, acut_dance_finished, acut_dance_reset),
+    [QUOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_quot_dance, quot_dance_finished, quot_dance_reset),
+    [DQUO_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dquo_dance, dquo_dance_finished, dquo_dance_reset),
+    [TAB_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_tab_dance, tab_dance_finished, tab_dance_reset),
+    [COLN_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_coln_dance, coln_dance_finished, coln_dance_reset),
+    [DOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dot_dance, dot_dance_finished, dot_dance_reset),
+    [PLUS_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_plus_dance, plus_dance_finished, plus_dance_reset),
 };
