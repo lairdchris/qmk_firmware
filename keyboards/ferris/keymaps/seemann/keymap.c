@@ -44,11 +44,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |   z   |    x   |   c   |   d   |    v    |     |    k    |    h    |  ,    |    .   |   /   |
      * |       |        |       |       |         |     |         |         |       |        |       |
      * \------------------------------------------+     |--------------------------------------------/
-     *                          | Space |  Space  |     |  Space  |  Space  |
-     *                          | _SYM_ |  Shift  |     |  Shift  |  _NUM_  |
+     *                          | Space |   Esc   |     |   Tab   |  Space  |
+     *                          | _SYM_ |         |     |         |  _NUM_  |
      *                          \-----------------/     \-------------------/
      */
-    [BASE] = LAYOUT_split_3x5_2(KC_Q, KC_W, KC_F, KC_P, KC_B, /* */ KC_J, KC_L, KC_U, DE_Y, KC_BSPC, LSFT_T(KC_A), LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), LT(4, KC_G), /* */ LT(4, KC_M), RGUI_T(KC_N), LALT_T(KC_E), RCTL_T(KC_I), RSFT_T(KC_O), DE_Z, KC_X, KC_C, KC_D, KC_V, /* */ KC_K, KC_H, KC_COMM, KC_DOT, DE_SLSH, LT(1, KC_SPC), TD(ESC_D), /* */ TD(TAB_D), LT(2, KC_SPC)),
+    [BASE] = LAYOUT_split_3x5_2(
+        KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,        /* */ KC_J,        KC_L,         KC_U,         DE_Y,         KC_BSPC,
+        LSFT_T(KC_A), LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), LT(4, KC_G), /* */ LT(4, KC_M), RGUI_T(KC_N), LALT_T(KC_E), RCTL_T(KC_I), RSFT_T(KC_O),
+        DE_Z,         KC_X,         KC_C,         KC_D,         KC_V,        /* */ KC_K,        KC_H,         KC_COMM,      KC_DOT,       DE_SLSH,
+                                                   LT(1, KC_SPC), TD(ESC_D), /* */ TD(TAB_D), LT(2, KC_SPC)
+    ),
     /*
      * Layer SYM
      * ,------------------------------------------.     ,--------------------------------------------.
@@ -65,7 +70,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          |       |         |     |         |  _MOU_  |
      *                          \-----------------/     \-------------------/
      */
-    [SYM] = LAYOUT_split_3x5_2(DE_EXLM, DE_AT, DE_HASH, DE_DLR, DE_PERC, /* */ DE_CIRC, DE_AMPR, DE_ASTR, DE_SCLN, DE_COLN, LSFT_T(DE_ADIA), LCTL_T(DE_ODIA), LALT_T(DE_SS), LGUI_T(DE_UDIA), DE_EURO, /* */ TD(PLUS_D), TD(ACUT_D), TD(QUOT_D), TD(DQUO_D), KC_ENT, XXXXXXX, DE_TILD, DE_BSLS, DE_PIPE, XXXXXXX, /* */ DE_MINS, DE_UNDS, DE_LABK, DE_RABK, DE_QUES, XXXXXXX, KC_ESC, /* */ KC_TAB, MO(3)),
+    [SYM] = LAYOUT_split_3x5_2(
+        DE_EXLM,         DE_AT,           DE_HASH,       DE_DLR,          DE_PERC, /* */ DE_CIRC,    DE_AMPR,    DE_ASTR,    DE_SCLN,    DE_COLN,
+        LSFT_T(DE_ADIA), LCTL_T(DE_ODIA), LALT_T(DE_SS), LGUI_T(DE_UDIA), DE_EURO, /* */ TD(PLUS_D), TD(ACUT_D), TD(QUOT_D), TD(DQUO_D), KC_ENT,
+        XXXXXXX,         DE_TILD,         DE_BSLS,       DE_PIPE,         XXXXXXX, /* */ DE_MINS,    DE_UNDS,    DE_LABK,    DE_RABK,    DE_QUES,
+                                                                  XXXXXXX, KC_ESC, /* */ KC_TAB, MO(3)
+    ),
     /*
      * Layer NUM
      * ,------------------------------------------.     ,--------------------------------------------.
@@ -82,7 +92,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          | _MOU_ |         |     |         |         |
      *                          \-----------------/     \-------------------/
      */
-    [NUM] = LAYOUT_split_3x5_2(XXXXXXX, XXXXXXX, DE_LCBR, DE_RCBR, XXXXXXX, /* */ KC_KP_MINUS, KC_7, KC_8, KC_9, TD(COLN_D), XXXXXXX, DE_SCLN, DE_LPRN, DE_RPRN, DE_EQL, /* */ DE_PLUS, KC_4, KC_5, KC_6, KC_ENT, XXXXXXX, XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0, KC_1, KC_2, KC_3, TD(DOT_D), MO(3), KC_ESC, /* */ KC_TAB, XXXXXXX),
+    [NUM] = LAYOUT_split_3x5_2(
+        XXXXXXX, XXXXXXX, DE_LCBR, DE_RCBR, XXXXXXX, /* */ KC_KP_MINUS, KC_7, KC_8, KC_9, TD(COLN_D),
+        XXXXXXX, DE_SCLN, DE_LPRN, DE_RPRN, DE_EQL,  /* */ DE_PLUS,     KC_4, KC_5, KC_6, KC_ENT,
+        XXXXXXX, XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0,        KC_1, KC_2, KC_3, TD(DOT_D),
+                                      MO(3), KC_ESC, /* */ KC_TAB, XXXXXXX
+    ),
     /*
      * Layer NAV
      * ,------------------------------------------.     ,--------------------------------------------.
@@ -99,7 +114,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          |       |         |     |        |         |
      *                          \-----------------/     \------------------/
      */
-    [NAV] = LAYOUT_split_3x5_2(KC_F1, KC_F2, KC_F3, KC_F4, XXXXXXX, /* */ KC_HOME, XXXXXXX, XXXXXXX, KC_INS, KC_DEL, LSFT_T(KC_F5), LCTL_T(KC_F6), LALT_T(KC_F7), LGUI_T(KC_F8), XXXXXXX, /* */ KC_LEFT, RGUI_T(KC_DOWN), LALT_T(KC_UP), RCTL_T(KC_RGHT), RSFT_T(KC_END), KC_F9, KC_F10, KC_F11, KC_F12, XXXXXXX, /* */ KC_END, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC, /* */ KC_TAB, XXXXXXX),
+    [NAV] = LAYOUT_split_3x5_2(
+        KC_F1,         KC_F2,         KC_F3,         KC_F4,         XXXXXXX, /* */ KC_HOME, XXXXXXX,         XXXXXXX,       KC_INS,          KC_DEL,
+        LSFT_T(KC_F5), LCTL_T(KC_F6), LALT_T(KC_F7), LGUI_T(KC_F8), XXXXXXX, /* */ KC_LEFT, RGUI_T(KC_DOWN), LALT_T(KC_UP), RCTL_T(KC_RGHT), RSFT_T(KC_END),
+        KC_F9,         KC_F10,        KC_F11,        KC_F12,        XXXXXXX, /* */ KC_END,  KC_PGDN,         KC_PGUP,       XXXXXXX,         XXXXXXX,
+                                                            XXXXXXX, KC_ESC, /* */ KC_TAB, XXXXXXX
+    ),
     /*
      * Layer MOU
      * ,------------------------------------------.     ,--------------------------------------------.
@@ -116,7 +136,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          |       |         |     |        |         |
      *                          \-----------------/     \------------------/
      */
-    [MOU] = LAYOUT_split_3x5_2(KC_MUTE, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, /* */ XXXXXXX, KC_MRWD, KC_MPLY, KC_MFFD, XXXXXXX, KC_VOLU, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, /* */ XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */ XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, RESET, XXXXXXX, _______, /* */ _______, XXXXXXX)};
+    [MOU] = LAYOUT_split_3x5_2(
+        KC_MUTE, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, /* */ XXXXXXX, KC_MRWD, KC_MPLY, KC_MFFD, XXXXXXX,
+        KC_VOLU, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, /* */ XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX,
+        KC_VOLD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */ XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, RESET,
+                                   XXXXXXX, _______, /* */ _______, XXXXXXX
+    )
+};
 
 typedef struct {
     bool    is_press_action;
@@ -611,5 +637,12 @@ void tab_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [ACUT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_acut_dance, acut_dance_finished, acut_dance_reset), [QUOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_quot_dance, quot_dance_finished, quot_dance_reset), [DQUO_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dquo_dance, dquo_dance_finished, dquo_dance_reset), [COLN_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_coln_dance, coln_dance_finished, coln_dance_reset), [DOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dot_dance, dot_dance_finished, dot_dance_reset), [PLUS_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_plus_dance, plus_dance_finished, plus_dance_reset), [ESC_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_esc_dance, esc_dance_finished, esc_dance_reset), [TAB_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_tab_dance, tab_dance_finished, tab_dance_reset),
+    [ACUT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_acut_dance, acut_dance_finished, acut_dance_reset),
+    [QUOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_quot_dance, quot_dance_finished, quot_dance_reset),
+    [DQUO_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dquo_dance, dquo_dance_finished, dquo_dance_reset),
+    [COLN_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_coln_dance, coln_dance_finished, coln_dance_reset),
+    [DOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dot_dance, dot_dance_finished, dot_dance_reset),
+    [PLUS_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_plus_dance, plus_dance_finished, plus_dance_reset),
+    [ESC_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_esc_dance, esc_dance_finished, esc_dance_reset),
+    [TAB_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_tab_dance, tab_dance_finished, tab_dance_reset),
 };
