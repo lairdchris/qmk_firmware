@@ -22,7 +22,6 @@ enum tap_dance_codes {
     ACUT_D,
     QUOT_D,
     DQUO_D,
-    TAB_D,      // Tab, Shift, Ctrl+Gui+Right (Change desktop in Windows)
     COLN_D,
     DOT_D,
     PLUS_D,
@@ -574,68 +573,6 @@ void esc_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
     dance_state[8].step = 0;
 }
 
-void on_tab_dance(qk_tap_dance_state_t *state, void *user_data);
-void tab_dance_finished(qk_tap_dance_state_t *state, void *user_data);
-void tab_dance_reset(qk_tap_dance_state_t *state, void *user_data);
-
-void on_tab_dance(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 3) {
-        tap_code16(KC_TAB);
-        tap_code16(KC_TAB);
-        tap_code16(KC_TAB);
-    }
-    if (state->count > 3) {
-        tap_code16(KC_TAB);
-    }
-}
-
-void tab_dance_finished(qk_tap_dance_state_t *state, void *user_data) {
-    dance_state[8].step = dance_step(state);
-    switch (dance_state[8].step) {
-        case SINGLE_TAP:
-            register_code16(KC_TAB);
-            break;
-        case SINGLE_HOLD:
-            register_code16(KC_LSFT);
-            break;
-        case DOUBLE_TAP:
-            register_code16(KC_LCTL);
-            register_code16(KC_LGUI);
-            register_code16(KC_RIGHT);
-            break;
-        case DOUBLE_HOLD:
-            register_code16(KC_TAB);
-            break;
-        case DOUBLE_SINGLE_TAP:
-            tap_code16(KC_TAB);
-            register_code16(KC_TAB);
-    }
-}
-
-void tab_dance_reset(qk_tap_dance_state_t *state, void *user_data) {
-    wait_ms(10);
-    switch (dance_state[8].step) {
-        case SINGLE_TAP:
-            unregister_code16(KC_TAB);
-            break;
-        case SINGLE_HOLD:
-            unregister_code16(KC_LSFT);
-            break;
-        case DOUBLE_TAP:
-            unregister_code16(KC_RIGHT);
-            unregister_code16(KC_LGUI);
-            unregister_code16(KC_LCTL);
-            break;
-        case DOUBLE_HOLD:
-            unregister_code16(KC_TAB);
-            break;
-        case DOUBLE_SINGLE_TAP:
-            unregister_code16(KC_TAB);
-            break;
-    }
-    dance_state[8].step = 0;
-}
-
 qk_tap_dance_action_t tap_dance_actions[] = {
     [ACUT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_acut_dance, acut_dance_finished, acut_dance_reset),
     [QUOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_quot_dance, quot_dance_finished, quot_dance_reset),
@@ -644,5 +581,4 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [DOT_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_dot_dance, dot_dance_finished, dot_dance_reset),
     [PLUS_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_plus_dance, plus_dance_finished, plus_dance_reset),
     [ESC_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_esc_dance, esc_dance_finished, esc_dance_reset),
-    [TAB_D] = ACTION_TAP_DANCE_FN_ADVANCED(on_tab_dance, tab_dance_finished, tab_dance_reset),
 };
