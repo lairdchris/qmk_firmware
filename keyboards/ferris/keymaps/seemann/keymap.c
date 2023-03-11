@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *
      * Layer BASE
      * ,------------------------------------------.     ,--------------------------------------------.
-     * |   q   |    w   |   f   |   p   |    b    |     |    j    |    l    |   u   |    y   | Bksp  |
+     * |   q   |    w   |   f   |   p   |    b    |     |    j    |    l    |   u   |    y   |   ;   |
      * |       |        |       |       |         |     |         |         |       |        |       |
      * |------------------------------------------+     |--------------------------------------------+
      * |   a   |    r   |   s   |   t   |    g    |     |    m    |    n    |   e   |    i   |   o   |
@@ -48,10 +48,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                          \-----------------/     \-------------------/
      */
     [BASE] = LAYOUT_split_3x5_2(
-        KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,        /* */ KC_J,        KC_L,         KC_U,         DE_Y,         KC_BSPC,
+        KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,        /* */ KC_J,        KC_L,         KC_U,         DE_Y,         DE_SCLN,
         LSFT_T(KC_A), LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), LT(NAV, KC_G), /* */ LT(NAV, KC_M), RGUI_T(KC_N), LALT_T(KC_E), RCTL_T(KC_I), RSFT_T(KC_O),
         DE_Z,         KC_X,         KC_C,         KC_D,         KC_V,        /* */ KC_K,        KC_H,         KC_COMM,      KC_DOT,       DE_SLSH,
-                                                 LT(SYM, KC_SPC), TD(ESC_D), /* */ KC_LSFT, LT(NUM, KC_SPC)
+                                                 LT(SYM, KC_SPC), TD(ESC_D), /* */ RSFT_T(KC_BSPC), LT(NUM, KC_SPC)
     ),
     /*
      * Layer SYM
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |   ä   |    ö   |   ß   |   ü   |    €    |     |    +    |    `    |   '   |    "   | Enter |
      * | Shift |  Ctrl  |  Alt  |  Gui  |         |     |  Home   |  PgDn   | PgUp  |   End  |       |
      * |------------------------------------------+     |--------------------------------------------+
-     * |       |    ~   |   \   |   |   |         |     |    -    |    _    |   <   |    >   |   ?   |
+     * |  Esc  |    ~   |   \   |   |   |         |     |    -    |    _    |   <   |    >   |   ?   |
      * |       |        |       |       |         |     |         |         |       |        |       |
      * \------------------------------------------+     |--------------------------------------------/
      *                          |       |   Esc   |     |   Tab   |         |
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT_split_3x5_2(
         DE_EXLM,         DE_AT,           DE_HASH,       DE_DLR,          DE_PERC, /* */ DE_CIRC,    DE_AMPR,    DE_ASTR,    DE_SCLN,    DE_COLN,
         LSFT_T(DE_ADIA), LCTL_T(DE_ODIA), LALT_T(DE_SS), LGUI_T(DE_UDIA), DE_EURO, /* */ TD(PLUS_D), TD(ACUT_D), TD(QUOT_D), TD(DQUO_D), KC_ENT,
-        XXXXXXX,         DE_TILD,         DE_BSLS,       DE_PIPE,         XXXXXXX, /* */ DE_MINS,    DE_UNDS,    DE_LABK,    DE_RABK,    DE_QUES,
+        KC_ESC,          DE_TILD,         DE_BSLS,       DE_PIPE,         XXXXXXX, /* */ DE_MINS,    DE_UNDS,    DE_LABK,    DE_RABK,    DE_QUES,
                                                                   XXXXXXX, KC_ESC, /* */ KC_LSFT, MO(MOU)
     ),
     /*
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |  Tab  |    ;   |   (   |   )   |    =    |     |    +    |    4    |   5   |    6   | Enter |
      * |       |        |       |       |         |     |         |         |       |        |       |
      * |------------------------------------------+     |--------------------------------------------+
-     * |       |        |   [   |   ]   |         |     |    0    |    1    |   2   |    3   |   .   |
+     * |  Esc  |        |   [   |   ]   |         |     |    0    |    1    |   2   |    3   |   .   |
      * |       |        |       |       |         |     |         |         |       |        |   ,   |
      * \------------------------------------------+     |--------------------------------------------/
      *                          |       |   Esc   |     |   Tab   |         |
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUM] = LAYOUT_split_3x5_2(
         XXXXXXX, XXXXXXX, DE_LCBR, DE_RCBR, XXXXXXX, /* */ KC_KP_MINUS, KC_7, KC_8, KC_9, TD(COLN_D),
         KC_TAB,  DE_SCLN, DE_LPRN, DE_RPRN, DE_EQL,  /* */ DE_PLUS,     KC_4, KC_5, KC_6, KC_ENT,
-        XXXXXXX, XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0,        KC_1, KC_2, KC_3, TD(DOT_D),
+        KC_ESC,  XXXXXXX, DE_LBRC, DE_RBRC, XXXXXXX, /* */ KC_0,        KC_1, KC_2, KC_3, TD(DOT_D),
                                       MO(MOU), KC_ESC, /* */ KC_TAB, XXXXXXX
     ),
     /*
